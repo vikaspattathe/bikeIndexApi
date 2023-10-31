@@ -3,7 +3,7 @@ import time
 class GPT:
 
     def __init__(self) -> None:
-        self.key = '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'
+        self.key = '' #replace with your OPENAI API KEY.
         openai.api_key = self.key
 
     def get_from_gpt(self, prompt, model="gpt-3.5-turbo"):
