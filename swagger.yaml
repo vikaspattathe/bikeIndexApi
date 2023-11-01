@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: Bike Index for Bonafi
+  version: 1.0
+  description: API to search and filter stolen bikes from BikeIndex website.
+  contact:
+    email: vikaspatathe@gmail.com
+
+paths:
+  /bikeindex/search:
+    get:
+      summary: Search for bikes
+      parameters:
+        - name: location
+          in: query
+          description: Search location (IP location by default)
+          schema:
+            type: string
+        - name: duration
+          in: query
+          description: Duration in months (Default is 6 months)
+          schema:
+            type: integer
+        - name: manufacturer
+          in: query
+          description: Manufacturer name
+          schema:
+            type: string
+        - name: distance
+          in: query
+          description: Range in kms (Default is 10Km)
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bike'
+  /bikeindex/id:
+    get:
+      summary: Get bike by ID
+      parameters:
+        - name: id
+          in: query
+          description: Bike ID from BikeIndex
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bike'
+components:
+  schemas:
+    Bike:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Bike ID
+        manufacturer_name:
+          type: string
+          description: Manufacturer Name
+
