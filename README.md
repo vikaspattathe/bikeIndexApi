@@ -37,17 +37,12 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 
 # USAGE
 ## User endpoints:
-GET  http://127.0.0.1:5000/bikeindex/search: 
+GET  bikeindex/search: 
 Allows users to search for stolen bikes based on various parameters like location, duration, distance and manufacturer name.
 
 Request:
 
-    {
-        'location':'Dublin',
-        'duration:3,
-        'manufacturer':''
-        'distance':10
-    }
+    http://127.0.0.1:5000/bikeindex/search?location=dublin&duration=3&manufacturer=Trek&distance=10
 
 Response:
     
@@ -87,13 +82,11 @@ Response:
         ]
     }
 
-GET http://127.0.0.1:5000/bikeindex/id: Enables users to search for a specific stolen bike by providing its unique ID.
+GET /bikeindex/id: Enables users to search for a specific stolen bike by providing its unique ID.
 
 Request:
 
-    {
-        'id':1335559
-    }
+    http://127.0.0.1:5000/bikeindex/id?id=1335559
 
 Response:
     

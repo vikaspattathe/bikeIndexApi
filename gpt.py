@@ -39,7 +39,6 @@ class GPT:
             prompt="2 lines on {} bike manfacturer include founded year".format(manufacturer)
             manufacturer_details =self.get_from_gpt(prompt)
             self.logger.INFO("Recieved details of manufacturer: %s from GPT",manufacturer)
-            print(manufacturer_details)
         except Exception as e:
             self.logger.error("Error while fetching manufacturer details from GPT: %s",e)
             manufacturer_details=''
