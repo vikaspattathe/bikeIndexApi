@@ -3,7 +3,8 @@ This project provides a RESTful API for searching and filtering stolen bikes fro
 
 
 # Features
-Stolen Bike Search: Easily search for stolen bikes with the below parameters.    
+Stolen Bike Search: Easily search for stolen bikes with the below parameters.
+    
     Location: Search by location or using the user's IP location by default.
 
     Duration: Filter bikes based on the duration since they were reported stolen (default is 6 months).
@@ -48,6 +49,7 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 
 # USAGE
 The Bike Index API provides two main endpoints:
+
     bikeindex/search: Allows users to search for stolen bikes based on various parameters like location, duration, distance and manufacturer name.
 
     bikeindex/id: Enables users to search for a specific stolen bike by providing its unique ID.
