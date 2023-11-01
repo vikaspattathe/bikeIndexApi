@@ -4,7 +4,9 @@ This project provides a RESTful API for searching and filtering stolen bikes fro
 
 # Features
 Stolen Bike Search: Easily search for stolen bikes with the below parameters.
+    
     Location: Search by location or using the user's IP location by default.
+
     Duration: Filter bikes based on the duration since they were reported stolen (default is 6 months).
     
     Distance: Refine results within a specified range (default is 10 kilometers).
