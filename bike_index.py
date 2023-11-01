@@ -1,6 +1,7 @@
 import requests
 import json
 import shutil
+import logging
 from datetime import datetime, timedelta
 import csv
 import base64
@@ -11,14 +12,19 @@ import os
 
 class BikeIndex:
     def __init__(self) -> None:
+        FORMAT = "[%(asctime)s %(filename)s->%(funcName)s():%(lineno)s]%(levelname)s: %(message)s"
+        logging.basicConfig(filename='./logs/Logs.log',format=FORMAT, level=logging.INFO)
+        self.logger = logging.getLogger(__name__)
+
         self.url = "https://bikeindex.org:443/api/v3/"
         self.gpt = GPT()
         self.manufacturers = self.manufacturer_details_from_csv()
+        
 
     def search_by_location(self, location: str, distance: int=10, manufacturer: str='') -> list:
         results = []
         page = 1
-
+        
         try:
             while True:
                 url = "{}search?page={}&per_page=100&manufacturer={}&location={}&distance={}&stolenness=proximity".format(self.url, page, manufacturer, location, distance)
@@ -26,7 +32,8 @@ class BikeIndex:
                 response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
 
                 search_result = json.loads(response.text)
-                print("Page :",page)
+                self.logger.debug("Recieved Page: %d from bikeIndex API", page)
+                
                 if "bikes" in search_result:
                     if not search_result["bikes"] or search_result["bikes"] == []:
                         break
@@ -39,19 +46,17 @@ class BikeIndex:
                 else:
                     break
         except requests.exceptions.RequestException as e:
-            print(f"Error while searching for bikes: {e}")
+            self.logger.error("Error while searching for bikes: %s", e)  
         except (json.JSONDecodeError, ValueError) as e:
-            print(f"Error decoding JSON response: {e}")
+            self.logger.error("Error decoding JSON response: %s", e)
         except Exception as e:
-            print(f"An unexpected error occurred: {e}")
+            self.logger.error("An unexpected error occured: %s", e)
         return results
 
     def search(self,location: str, distance: int=10, manufacturer: str='', duration:int=6) -> list:
         results = self.search_by_location(location, distance, manufacturer)
         results = self.filter_by_time(results, duration)
-        results = self.format_date(results)
-        results = self.image_to_base64(results)
-        results = self.write_manufacturer_details(results)
+        results = self.format_data(results)
         return results
 
     def write_manufacturer_details(self, bikes: list) -> list:
@@ -69,7 +74,7 @@ class BikeIndex:
                         self.manufacturers[manufacturer] = details
                         csv_updated = True
                     except Exception as e:
-                        print(f"Error while getting manufacturer details: {e}")
+                        self.logger.error("Error while getting manufacturer details: %s", e)
 
         if csv_updated:
             self.manufacturer_details_to_csv()
@@ -83,14 +88,20 @@ class BikeIndex:
 
                 for row in reader:
                     manufacturer_name = row["manufacturer name"]
-                    manufacturer_details = row["manufacturer_details"]
-
+                    manufacturer_details = row["manufacturer details"]
                     self.manufacturers[manufacturer_name] = manufacturer_details
+
         except FileNotFoundError:
-            # Handle missing CSV file
-            pass
+            self.logger.error("Missing Manufacturers.csv file: %s", e)
+            self.logger.info("Creating manufacturers.csv file")
+            with open("manufacturers.csv", mode='w', newline='', encoding='utf-8') as csv_file:
+                fieldnames = ['manufacturer name', 'manufacturer details']
+                writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+                writer.writeheader()
+                pass
+
         except Exception as e:
-            print(f"Error while reading manufacturers CSV: {e}")
+            self.logger.error("Error while reading manufacturers CSV: %s", e)
 
         return self.manufacturers
 
@@ -103,9 +114,9 @@ class BikeIndex:
                 writer.writeheader()
 
                 for manufacturer_name, manufacturer_details in self.manufacturers.items():
-                    writer.writerow({"manufacturer name": manufacturer_name, "manufacturer_details": manufacturer_details})
+                    writer.writerow({"manufacturer name": manufacturer_name, "manufacturer details": manufacturer_details})
         except (OSError, PermissionError, FileNotFoundError) as e:
-            print(f"Error while writing to CSV: {e}")
+            self.logger.error("Error while writing to CSV: %s", e)
 
     def image_to_base64(self, bikes: list) -> list:
         for bike in bikes:
@@ -124,40 +135,33 @@ class BikeIndex:
                         image_base64 = str(base64.b64encode(image_data).decode('utf-8'))
                         bike['image_base64'] = image_base64
                 except requests.exceptions.RequestException as e:
-                    print(f"Error while fetching image for bike {bike['id']}: {e}")
+                    self.logger.error("Error while fetching image for bike %s: %s", bike['id'], e)
                 except Exception as e:
-                    print(f"An unexpected error occurred while processing images: {e}")
-
+                    self.logger.error("An unexpected error occurred while processing images: %s", e)
         return bikes
 
     def get_ids(self, search_result: dict) -> list:
         ids = []
-
         for bike in search_result["bikes"]:
             ids.append(bike["id"])
-
         return ids
 
-    def search_by_id(self, ids: list) -> list:
-        bikes = []
-
-        for bike_id in ids:
-            url = "{}bikes/{}".format(self.url, bike_id)
-
-            try:
-                response = requests.get(url)
-                response.raise_for_status()
-
-                search_result = json.loads(response.text)
-                bikes.append(search_result)
-            except requests.exceptions.RequestException as e:
-                print(f"Error while fetching bike details: {e}")
-            except (json.JSONDecodeError, ValueError) as e:
-                print(f"Error decoding JSON response: {e}")
-            except Exception as e:
-                print(f"An unexpected error occurred while searching by ID: {e}")
-
-        return bikes
+    def search_by_id(self, bike_id:int) ->list:
+        bike=[]
+        url = "{}bikes/{}".format(self.url, bike_id)
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            search_result = json.loads(response.text)
+            bike=[search_result["bike"]]
+            bike=self.format_data(bike)
+        except requests.exceptions.RequestException as e:
+            self.logger.error("Error while fetching bike details: %s", e)
+        except (json.JSONDecodeError, ValueError) as e:
+            self.logger.error("Error decoding JSON response: %s", e)
+        except Exception as e:
+            self.logger.error("An unexpected error occurred while searching by ID: %s", e)
+        return bike
 
     def filter_by_time(self, search_result: list, months_ago: int) -> list:
         try:
@@ -170,8 +174,7 @@ class BikeIndex:
                     if date_stolen >= search_date:
                         filtered_records.append(bike)
         except Exception as e:
-            print(f"An error occurred while filtering by time: {e}")
-
+            self.logger.error("An error occurred while filtering by time: %s", e)
         return filtered_records
 
     def format_date(self, search_result: list) -> list:
@@ -183,21 +186,20 @@ class BikeIndex:
                     date_stolen = datetime.fromtimestamp(timestamp).strftime("%d-%m-%Y")
                     bike["date_stolen"] = date_stolen
                 except Exception as e:
-                    print(f"An error occurred while formatting dates: {e}")
-
+                    self.logger.error("An error occurred while formatting dates: %s", e)
         return bikes
 
     def field_is_empty(self, field) -> bool:
         if field == '' or field is None:
             return True
         return False
-    '''
+    
     def format_data(self, search_result: list) -> list:
         search_result = self.format_date(search_result)
+        search_result = self.write_manufacturer_details(search_result)
         search_result = self.image_to_base64(search_result)
         return search_result
 
-    '''
     '''
     def write_to_csv(self, bikes: list):
         if bikes is not None:
@@ -236,3 +238,4 @@ class BikeIndex:
                 except Exception as e:
                     print(f"Error {e} while decoding image in bike {bike['id']}")
     '''
+

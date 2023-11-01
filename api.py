@@ -1,15 +1,22 @@
 from flask import Flask, request
-from flask_restx import Api, Resource, fields, Namespace
+from flask_restx import Api, Resource, fields, Namespace, apidoc
 from datetime import datetime, timedelta
 from bike_index import BikeIndex
+import logging
 
 app = Flask(__name__)
 bi = BikeIndex()
 
-api = Api(app, version='1.0', title='Bike Index for Bonafi', description='API to search and filter stolen bikes from BikeIndex website.',)
+api = Api(app, version='1.0', title='Bike Index for Bonafi', contact_email='vikaspatathe@gmail.com', description='API to search and filter stolen bikes from BikeIndex website.',base_url='fafa')
+
+FORMAT = "[%(asctime)s %(filename)s->%(funcName)s():%(lineno)s]%(levelname)s: %(message)s"
+logging.basicConfig(filename='./logs/Logs.log',format=FORMAT, level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 ns = Namespace('bikeindex', description='search operations')
 api.add_namespace(ns)
+
+
 # Define models for API documentation
 bike_model = api.model('Bike', {
     'id': fields.Integer(description='Bike ID'),
@@ -43,29 +50,64 @@ bike_model = api.model('Bike', {
 @ns.route('/search')
 class BikeSearch(Resource):
     @ns.doc(params={
-        'location': 'Search location (IP location by default)',
-        'duration': 'Duration in months (Default is 6 months)',
-        'manufacturer': 'Manufacturer name',
-        'distance': 'Range in kms (Default is 10Km)'
+        'location': {'description': 'Search location (IP location by default)', 'type': 'string'},
+        'duration': {'description': 'Duration in months (6 by default)', 'type': 'integer'},
+        'manufacturer': {'description': 'Manufacturer name', 'type': 'string'},
+        'distance': {'description': 'Range in kms (10 by default)', 'type': 'integer'}
     })
     @api.response(200, 'Success', [bike_model])
     def get(self):
-        location = request.args.get('location')
-        duration = int(request.args.get('duration', 6))
-        manufacturer = request.args.get('manufacturer', '')
-        distance = request.args.get('distance', 10)
-        if not location:
-            location = request.remote_addr
-
         try:
+            client_ip = request.remote_addr
+            logger.info(f"Received API call: /search from IP {client_ip}")
+
+            location = request.args.get('location')
+            duration = int(request.args.get('duration', 6))
+            manufacturer = request.args.get('manufacturer', '')
+            distance = request.args.get('distance', 10)
+
+            if not location:
+                location = client_ip
+
+        
             results = bi.search(location, distance, manufacturer,duration)
             response_data = {
-                'number of bikes': len(results),
+                'count': len(results),
                 'bikes': results
             }
             return response_data, 200
         except Exception as e:
             error_message = f"An error occurred: {str(e)}"
+            logger.error(error_message)
+            return {'error': error_message}, 500
+        
+@ns.route('/id')
+class BikeSearchById(Resource):
+    @ns.doc(params={
+        'id': {'description': 'Bike id from BikeIndex', 'type': 'integer','required': True}
+    })
+    @api.response(200, 'Success', [bike_model])
+    def get(self):
+        try:
+            client_ip = request.remote_addr
+            logger.info(f"Received API call: /id from IP {client_ip}")
+
+            bike_id = request.args.get('id')
+
+            if not bike_id or bike_id==None:
+                logger.error("Argument 'id' is missing")
+                raise ValueError("Argument 'id' is missing")
+
+            results = bi.search_by_id(int(bike_id))
+            response_data = results[0]
+            return response_data, 200
+        except ValueError as ve:
+            error_message = f"Bad request: {str(ve)}"
+            logger.error(error_message)
+            return {'error': error_message}, 400
+        except Exception as e:
+            error_message = f"An error occurred: {str(e)}"
+            logger.error(error_message)
             return {'error': error_message}, 500
 
 if __name__ == '__main__':
