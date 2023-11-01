@@ -1,16 +1,15 @@
 from flask import Flask, request
 from flask_restx import Api, Resource, fields, Namespace, apidoc
-from datetime import datetime, timedelta
 from bike_index import BikeIndex
 import logging
 
 app = Flask(__name__)
 bi = BikeIndex()
 
-api = Api(app, version='1.0', title='Bike Index for Bonafi', contact_email='vikaspatathe@gmail.com', description='API to search and filter stolen bikes from BikeIndex website.',base_url='fafa')
+api = Api(app, version='1.0', title='Bike Index for Bonafi', contact_email='vikaspatathe@gmail.com', description='API to search and filter stolen bikes from BikeIndex website.')
 
 FORMAT = "[%(asctime)s %(filename)s->%(funcName)s():%(lineno)s]%(levelname)s: %(message)s"
-logging.basicConfig(filename='./logs/Logs.log',format=FORMAT, level=logging.INFO)
+logging.basicConfig(filename='./logs/BikeIndex.log',format=FORMAT, level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 ns = Namespace('bikeindex', description='search operations')
@@ -47,6 +46,7 @@ bike_model = api.model('Bike', {
     'cycle_type_slug': fields.String(description='Cycle Type')
 })
 
+#API endpoint to query and retrieve bikes based on location, manufacturer,duration and distance.
 @ns.route('/search')
 class BikeSearch(Resource):
     @ns.doc(params={
@@ -80,7 +80,8 @@ class BikeSearch(Resource):
             error_message = f"An error occurred: {str(e)}"
             logger.error(error_message)
             return {'error': error_message}, 500
-        
+
+#API endpoint to retrieve bikes using their id        
 @ns.route('/id')
 class BikeSearchById(Resource):
     @ns.doc(params={
