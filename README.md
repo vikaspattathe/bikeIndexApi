@@ -48,9 +48,17 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 
 # GETTING STARTED 
 1. Clone this repository to your local machine:
-2. Install all the necessary libraries - 'pip install -r requirements.txt'
+2. Create and use a virtual environment:
+
+    python -m venv {environment_name}
+    source {environment_name}/bin/activate
+2. Install all the necessary libraries
+
+    'pip install -r requirements.txt'
 3. Replace OPEN_AI_KEY in gpt.py with your own key.
-4. Run the application - 'python main.py'
+4. Run the application
+    
+    'python main.py'
 5. You can view and test api on your browser : http://127.0.0.1:5000/
 
 # USAGE
@@ -66,7 +74,9 @@ Request:
         'manufacturer':''
         'distance':10
     }
+
 Response:
+    
     {
     "count": 1,
     "bikes": [
@@ -106,10 +116,13 @@ Response:
 GET http://127.0.0.1:5000/bikeindex/id: Enables users to search for a specific stolen bike by providing its unique ID.
 
 Request:
+
     {
         'id':1335559
     }
+
 Response:
+    
     {
         "date_stolen": "02-07-2023",
         "description": "Green front basket, stickers on frame, rear rack, selle italia leather saddle, phone mount on handlebars",
