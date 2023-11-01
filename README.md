@@ -12,7 +12,7 @@ Stolen Bike Search: Easily search for stolen bikes with the below parameters.
     
     Manufacturer Name: Find stolen bikes from a specific manufacturer by providing the manufacturer's name.
 
-Manufacturer Information: Additional manufacturer details are obtained from GPT (OpenAI's GPT-3 model) and added to the response as "manufacturer_details". This information is saved to the 'manufacturers.csv' file which acts as datastore. This data(manufacturer name and manufacturer details) is imported to the application as a dictionary(key:value pair). The application will only access this next time the same manufacturer comes up, eliminating an api call to GPT improving efficiency and response times. 
+Manufacturer Information: Additional manufacturer details are obtained from GPT (OpenAI's GPT-3 model) and added to the response as "manufacturer_details". This information is saved to the 'manufacturers.csv' file which acts as datastore. This data(manufacturer name and manufacturer details) is imported to the application as a dictionary(key : value pair). The application will only access this next time the same manufacturer comes up, eliminating an api call to GPT improving efficiency and response times. 
 
 Image Retrieval: Images of the stolen bikes are fetched from the web and converted into base64 encoding. These base64-encoded images are then included in the API response as "image_base64." This feature allows users to view images of stolen bikes directly through the API.
 
@@ -20,8 +20,8 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 1. Clone this repository to your local machine:
 2. Create and use a virtual environment:
 
-    python -m venv {environment_name}
-    source {environment_name}/bin/activate
+        python -m venv {environment_name}
+        source {environment_name}/bin/activate
 
 2. Install all the necessary libraries
 
