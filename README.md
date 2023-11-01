@@ -20,8 +20,8 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 1. Clone this repository to your local machine:
 2. Create and use a virtual environment:
 
-        python -m venv {environment_name}
-        source {environment_name}/bin/activate
+    python -m venv {environment_name}
+    source {environment_name}/bin/activate
 
 2. Install all the necessary libraries
 
