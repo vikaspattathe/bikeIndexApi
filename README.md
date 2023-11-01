@@ -17,8 +17,6 @@ Manufacturer Information: Additional manufacturer details are obtained from GPT 
 
 Image Retrieval: Images of the stolen bikes are fetched from the web and converted into base64 encoding. These base64-encoded images are then included in the API response as "image_base64." This feature allows users to view images of stolen bikes directly through the API.
 
-Filter Records: Filter through stolen bikes using location, duration, distance and manufacturer name.
-
 # DATA
 
     {
