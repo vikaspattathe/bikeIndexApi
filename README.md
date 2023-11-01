@@ -6,7 +6,9 @@ This project provides a RESTful API for searching and filtering stolen bikes fro
 Stolen Bike Search: Easily search for stolen bikes with the below parameters.
     Location: Search by location or using the user's IP location by default.
     Duration: Filter bikes based on the duration since they were reported stolen (default is 6 months).
+    
     Distance: Refine results within a specified range (default is 10 kilometers).
+    
     Manufacturer Name: Find stolen bikes from a specific manufacturer by providing the manufacturer's name.
 
 Manufacturer Information: Additional manufacturer details are obtained from GPT (OpenAI's GPT-3 model) and added to the response as "manufacturer_details." This information is saved to the "manufacturers.csv" file to reduce API calls, improving efficiency and response times.
@@ -16,6 +18,7 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 Filter Records: Filter through stolen bikes using location, duration, distance and manufacturer name.
 
 # DATA
+
 {
     "id": 0,
     "manufacturer_name": "string",
