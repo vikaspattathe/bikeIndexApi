@@ -62,7 +62,7 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 5. You can view and test api on your browser : http://127.0.0.1:5000/
 
 # USAGE
-# # User endpoints:
+## User endpoints:
 GET  http://127.0.0.1:5000/bikeindex/search: 
 Allows users to search for stolen bikes based on various parameters like location, duration, distance and manufacturer name.
 
