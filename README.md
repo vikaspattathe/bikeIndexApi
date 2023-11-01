@@ -1,4 +1,4 @@
-# Bike Index AP
+# Bike Index API
 This project provides a RESTful API for searching and filtering stolen bikes from the BikeIndex website. It allows users to query and retrieve information about stolen bikes based on location, manufacturer,duration and range.
 
 
