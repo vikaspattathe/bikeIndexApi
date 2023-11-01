@@ -16,49 +16,22 @@ Manufacturer Information: Additional manufacturer details are obtained from GPT 
 
 Image Retrieval: Images of the stolen bikes are fetched from the web and converted into base64 encoding. These base64-encoded images are then included in the API response as "image_base64." This feature allows users to view images of stolen bikes directly through the API.
 
-# DATA
-
-    bike={
-            "id": 0,
-            "manufacturer_name": "string",
-            "manufacturer_details": "string",
-            "date_stolen": "string",
-            "image_base64": "string",
-            "description": "string",
-            "frame_colors": ["string"],
-            "frame_model": "string",
-            "is_stock_img": true,
-            "large_img": "string",
-            "location_found": "string",
-            "external_id": 0,
-            "registry_name": "string",
-            "registry_url": "string",
-            "serial": "string",
-            "status": "string",
-            "stolen": true,
-            "stolen_coordinates": [int],
-            "stolen_location": "string",
-            "thumb": "string",
-            "title": "string",
-            "url": "string",
-            "year": 0,
-            "propulsion_type_slug": "string",
-            "cycle_type_slug": "string"
-        }
-
 # GETTING STARTED 
 1. Clone this repository to your local machine:
 2. Create and use a virtual environment:
 
     python -m venv {environment_name}
     source {environment_name}/bin/activate
+
 2. Install all the necessary libraries
 
-    'pip install -r requirements.txt'
+    pip install -r requirements.txt
+
 3. Replace OPEN_AI_KEY in gpt.py with your own key.
 4. Run the application
     
-    'python main.py'
+    python main.py
+
 5. You can view and test api on your browser : http://127.0.0.1:5000/
 
 # USAGE
