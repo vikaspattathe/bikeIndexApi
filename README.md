@@ -37,7 +37,7 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 
 # USAGE
 ## User endpoints:
-GET  bikeindex/search: 
+GET  /bikeindex/search: 
 Allows users to search for stolen bikes based on various parameters like location, duration, distance and manufacturer name.
 
 Request:
