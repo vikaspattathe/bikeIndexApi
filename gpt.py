@@ -8,7 +8,7 @@ class GPT:
         logging.basicConfig(filename='./logs/Logs.log',format=FORMAT, level=logging.INFO)
         self.logger = logging.getLogger(__name__)
 
-        OPEN_AI_KEY = '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' 
+        OPEN_AI_KEY = '' #Replace with your APIKEY 
         openai.api_key = OPEN_AI_KEY
 
     def get_from_gpt(self, prompt, model="gpt-3.5-turbo"):
