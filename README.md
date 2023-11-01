@@ -21,33 +21,33 @@ Filter Records: Filter through stolen bikes using location, duration, distance a
 
 # DATA
 
-{
-    "id": 0,
-    "manufacturer_name": "string",
-    "manufacturer_details": "string",
-    "date_stolen": "string",
-    "image_base64": "string",
-    "description": "string",
-    "frame_colors": ["string"],
-    "frame_model": "string",
-    "is_stock_img": true,
-    "large_img": "string",
-    "location_found": "string",
-    "external_id": 0,
-    "registry_name": "string",
-    "registry_url": "string",
-    "serial": "string",
-    "status": "string",
-    "stolen": true,
-    "stolen_coordinates": [int],
-    "stolen_location": "string",
-    "thumb": "string",
-    "title": "string",
-    "url": "string",
-    "year": 0,
-    "propulsion_type_slug": "string",
-    "cycle_type_slug": "string"
-}
+    {
+        "id": 0,
+        "manufacturer_name": "string",
+        "manufacturer_details": "string",
+        "date_stolen": "string",
+        "image_base64": "string",
+        "description": "string",
+        "frame_colors": ["string"],
+        "frame_model": "string",
+        "is_stock_img": true,
+        "large_img": "string",
+        "location_found": "string",
+        "external_id": 0,
+        "registry_name": "string",
+        "registry_url": "string",
+        "serial": "string",
+        "status": "string",
+        "stolen": true,
+        "stolen_coordinates": [int],
+        "stolen_location": "string",
+        "thumb": "string",
+        "title": "string",
+        "url": "string",
+        "year": 0,
+        "propulsion_type_slug": "string",
+        "cycle_type_slug": "string"
+    }
 
 # USAGE
 The Bike Index API provides two main endpoints:
