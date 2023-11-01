@@ -12,7 +12,7 @@ class BikeIndex:
     def __init__(self) -> None:
         #logger configuration
         FORMAT = "[%(asctime)s %(filename)s->%(funcName)s():%(lineno)s]%(levelname)s: %(message)s"
-        logging.basicConfig(filename='./logs/BikeIndex.log',format=FORMAT, level=logging.INFO)
+        logging.basicConfig(filename='./logs/BikeIndexApp.log',format=FORMAT, level=logging.INFO)
         self.logger = logging.getLogger(__name__)
 
         self.url = "https://bikeindex.org:443/api/v3/"
@@ -52,6 +52,7 @@ class BikeIndex:
             self.logger.error("Error decoding JSON response: %s", e)
         except Exception as e:
             self.logger.error("An unexpected error occured: %s", e)
+        self.logger.info("Recieved %d records from bikeIndex API", len(results))
         return results
 
     #function to retrieve retrieve and format relevant records.

@@ -1,0 +1,29 @@
+[2023-11-01 21:00:06,010 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-01 21:00:06,010 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-01 21:00:24,776 api.py->get():62]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-01 21:00:52,502 bike_index.py->search_by_location():55]INFO: Recieved 2537 records from bikeIndex API
+[2023-11-01 21:01:36,656 _internal.py->_log():224]INFO: 127.0.0.1 - - [01/Nov/2023 21:01:36] "GET /bikeindex/search?location=New%20York&duration=5 HTTP/1.1" 200 -
+[2023-11-01 21:02:48,974 main.py-><module>():10]INFO: Application started
+[2023-11-01 21:02:59,157 main.py-><module>():9]INFO: Application started
+[2023-11-01 21:02:59,177 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-01 21:02:59,177 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-01 21:49:28,378 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:49:28,381 bike_index.py->search_by_location():54]ERROR: An unexpected error occured: API Error
+[2023-11-01 21:49:28,381 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:49:28,384 bike_index.py->search_by_location():55]INFO: Recieved 200 records from bikeIndex API
+[2023-11-01 21:49:28,391 bike_index.py->search_by_location():55]INFO: Recieved 2 records from bikeIndex API
+[2023-11-01 21:50:21,907 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:50:21,912 bike_index.py->search_by_location():54]ERROR: An unexpected error occured: API Error
+[2023-11-01 21:50:21,912 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:50:21,917 bike_index.py->search_by_location():55]INFO: Recieved 200 records from bikeIndex API
+[2023-11-01 21:50:21,923 bike_index.py->search_by_location():55]INFO: Recieved 2 records from bikeIndex API
+[2023-11-01 21:50:30,777 gpt.py->get_manufacturer_details():44]ERROR: Error while fetching manufacturer details from GPT: 'Logger' object has no attribute 'INFO'
+[2023-11-01 21:50:30,779 gpt.py->get_manufacturer_details():44]ERROR: Error while fetching manufacturer details from GPT: 'Logger' object has no attribute 'INFO'
+[2023-11-01 21:51:41,904 gpt.py->get_manufacturer_details():44]ERROR: Error while fetching manufacturer details from GPT: 'Logger' object has no attribute 'INFO'
+[2023-11-01 21:52:32,837 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:52:32,842 bike_index.py->search_by_location():54]ERROR: An unexpected error occured: API Error
+[2023-11-01 21:52:32,843 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:52:32,848 bike_index.py->search_by_location():55]INFO: Recieved 200 records from bikeIndex API
+[2023-11-01 21:52:32,850 bike_index.py->search_by_location():55]INFO: Recieved 2 records from bikeIndex API

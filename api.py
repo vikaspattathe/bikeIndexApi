@@ -9,7 +9,7 @@ bi = BikeIndex()
 api = Api(app, version='1.0', title='Bike Index for Bonafi', contact_email='vikaspatathe@gmail.com', description='API to search and filter stolen bikes from BikeIndex website.')
 
 FORMAT = "[%(asctime)s %(filename)s->%(funcName)s():%(lineno)s]%(levelname)s: %(message)s"
-logging.basicConfig(filename='./logs/BikeIndex.log',format=FORMAT, level=logging.INFO)
+logging.basicConfig(filename='./logs/BikeIndexApp.log',format=FORMAT, level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 ns = Namespace('bikeindex', description='search operations')
