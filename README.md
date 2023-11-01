@@ -16,8 +16,7 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 Filter Records: Filter through stolen bikes using location, duration, distance and manufacturer name.
 
 # DATA
-bikes=[
-  {
+{
     "id": 0,
     "manufacturer_name": "string",
     "manufacturer_details": "string",
@@ -43,8 +42,7 @@ bikes=[
     "year": 0,
     "propulsion_type_slug": "string",
     "cycle_type_slug": "string"
-  }
-]
+}
 
 # USAGE
 The Bike Index API provides two main endpoints:
