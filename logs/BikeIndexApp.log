@@ -1,0 +1,108 @@
+[2023-11-01 21:00:06,010 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-01 21:00:06,010 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-01 21:00:24,776 api.py->get():62]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-01 21:00:52,502 bike_index.py->search_by_location():55]INFO: Recieved 2537 records from bikeIndex API
+[2023-11-01 21:01:36,656 _internal.py->_log():224]INFO: 127.0.0.1 - - [01/Nov/2023 21:01:36] "GET /bikeindex/search?location=New%20York&duration=5 HTTP/1.1" 200 -
+[2023-11-01 21:02:48,974 main.py-><module>():10]INFO: Application started
+[2023-11-01 21:02:59,157 main.py-><module>():9]INFO: Application started
+[2023-11-01 21:02:59,177 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-01 21:02:59,177 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-01 21:49:28,378 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:49:28,381 bike_index.py->search_by_location():54]ERROR: An unexpected error occured: API Error
+[2023-11-01 21:49:28,381 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:49:28,384 bike_index.py->search_by_location():55]INFO: Recieved 200 records from bikeIndex API
+[2023-11-01 21:49:28,391 bike_index.py->search_by_location():55]INFO: Recieved 2 records from bikeIndex API
+[2023-11-01 21:50:21,907 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:50:21,912 bike_index.py->search_by_location():54]ERROR: An unexpected error occured: API Error
+[2023-11-01 21:50:21,912 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:50:21,917 bike_index.py->search_by_location():55]INFO: Recieved 200 records from bikeIndex API
+[2023-11-01 21:50:21,923 bike_index.py->search_by_location():55]INFO: Recieved 2 records from bikeIndex API
+[2023-11-01 21:50:30,777 gpt.py->get_manufacturer_details():44]ERROR: Error while fetching manufacturer details from GPT: 'Logger' object has no attribute 'INFO'
+[2023-11-01 21:50:30,779 gpt.py->get_manufacturer_details():44]ERROR: Error while fetching manufacturer details from GPT: 'Logger' object has no attribute 'INFO'
+[2023-11-01 21:51:41,904 gpt.py->get_manufacturer_details():44]ERROR: Error while fetching manufacturer details from GPT: 'Logger' object has no attribute 'INFO'
+[2023-11-01 21:52:32,837 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:52:32,842 bike_index.py->search_by_location():54]ERROR: An unexpected error occured: API Error
+[2023-11-01 21:52:32,843 bike_index.py->search_by_location():55]INFO: Recieved 0 records from bikeIndex API
+[2023-11-01 21:52:32,848 bike_index.py->search_by_location():55]INFO: Recieved 200 records from bikeIndex API
+[2023-11-01 21:52:32,850 bike_index.py->search_by_location():55]INFO: Recieved 2 records from bikeIndex API
+[2023-11-01 23:11:50,626 main.py-><module>():9]INFO: Application started
+[2023-11-01 23:11:50,657 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-01 23:11:50,657 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-01 23:13:27,975 api.py->get():62]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-01 23:13:28,677 bike_index.py->search_by_location():55]INFO: Recieved 53 records from bikeIndex API
+[2023-11-01 23:13:29,024 _internal.py->_log():224]INFO: 127.0.0.1 - - [01/Nov/2023 23:13:29] "GET /bikeindex/search?location=dublin&duration=3&distance=10 HTTP/1.1" 200 -
+[2023-11-01 23:13:41,878 api.py->get():62]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-01 23:13:42,463 bike_index.py->search_by_location():55]INFO: Recieved 10 records from bikeIndex API
+[2023-11-01 23:13:42,717 _internal.py->_log():224]INFO: 127.0.0.1 - - [01/Nov/2023 23:13:42] "GET /bikeindex/search?location=dublin&duration=3&manufacturer=Trek&distance=10 HTTP/1.1" 200 -
+[2023-11-01 23:15:47,113 api.py->get():94]INFO: Received API call: /id from IP 127.0.0.1
+[2023-11-01 23:15:47,931 _internal.py->_log():224]INFO: 127.0.0.1 - - [01/Nov/2023 23:15:47] "GET /bikeindex/id?id=1335559 HTTP/1.1" 200 -
+[2023-11-02 05:40:12,552 gpt.py->__init__():17]ERROR: OPEN_AI_KEY environment variable is not set
+[2023-11-02 05:51:54,547 gpt.py->__init__():17]ERROR: OPEN_AI_KEY environment variable is not set
+[2023-11-02 05:52:30,799 gpt.py->__init__():17]ERROR: OPEN_AI_KEY environment variable is not set
+[2023-11-02 05:57:15,802 gpt.py->__init__():17]ERROR: OPEN_AI_KEY environment variable is not set
+[2023-11-02 05:59:24,566 gpt.py->__init__():17]ERROR: OPEN_AI_KEY environment variable is not set
+[2023-11-02 06:16:12,176 bike_index.py->manufacturer_details_from_csv():103]ERROR: Missing Manufacturers.csv file: [Errno 2] No such file or directory: 'manufacturers.csv'
+[2023-11-02 06:16:12,176 bike_index.py->manufacturer_details_from_csv():104]INFO: Creating manufacturers.csv file
+[2023-11-02 06:16:12,184 main.py-><module>():9]INFO: Application started
+[2023-11-02 06:16:12,200 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-02 06:16:12,200 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-02 06:16:18,703 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:18] "GET / HTTP/1.1" 200 -
+[2023-11-02 06:16:19,121 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:19] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+[2023-11-02 06:16:19,121 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:19] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+[2023-11-02 06:16:19,130 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:19] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+[2023-11-02 06:16:19,130 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:19] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+[2023-11-02 06:16:19,639 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:19] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+[2023-11-02 06:16:19,709 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:19] "GET /swagger.json HTTP/1.1" 200 -
+[2023-11-02 06:16:35,130 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 06:16:36,195 bike_index.py->search_by_location():54]INFO: Recieved 10 records from bikeIndex API
+[2023-11-02 06:16:44,362 gpt.py->get_manufacturer_details():63]ERROR: Error while fetching manufacturer details from GPT: 'Logger' object has no attribute 'INFO'
+[2023-11-02 06:16:45,525 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:16:45] "GET /bikeindex/search?location=dublin&duration=3&manufacturer=trek HTTP/1.1" 200 -
+[2023-11-02 06:17:50,665 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 06:17:51,551 bike_index.py->search_by_location():54]INFO: Recieved 10 records from bikeIndex API
+[2023-11-02 06:17:51,885 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:17:51] "GET /bikeindex/search?location=dublin&duration=3&manufacturer=trek HTTP/1.1" 200 -
+[2023-11-02 06:18:11,607 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 06:18:12,456 bike_index.py->search_by_location():54]INFO: Recieved 10 records from bikeIndex API
+[2023-11-02 06:18:13,082 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:18:13] "GET /bikeindex/search?location=dublin&duration=3&manufacturer=trek HTTP/1.1" 200 -
+[2023-11-02 06:19:03,928 main.py-><module>():9]INFO: Application started
+[2023-11-02 06:19:03,928 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-02 06:19:03,928 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-02 06:19:10,088 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 06:19:11,024 bike_index.py->search_by_location():54]INFO: Recieved 10 records from bikeIndex API
+[2023-11-02 06:19:17,098 gpt.py->get_manufacturer_details():61]INFO: Recieved details of manufacturer: Trek from GPT
+[2023-11-02 06:19:17,661 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:19:17] "GET /bikeindex/search?location=dublin&duration=3&manufacturer=trek HTTP/1.1" 200 -
+[2023-11-02 06:29:36,382 main.py-><module>():9]INFO: Application started
+[2023-11-02 06:29:36,397 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-02 06:29:36,397 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-02 06:29:52,013 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 06:29:52,984 bike_index.py->search_by_location():54]INFO: Recieved 53 records from bikeIndex API
+[2023-11-02 06:29:53,585 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:29:53] "GET /bikeindex/search?location=dublin&duration=3 HTTP/1.1" 200 -
+[2023-11-02 06:30:33,003 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 06:30:33,942 bike_index.py->search_by_location():54]INFO: Recieved 53 records from bikeIndex API
+[2023-11-02 06:30:34,829 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:30:34] "GET /bikeindex/search?location=dublin&duration=6 HTTP/1.1" 200 -
+[2023-11-02 06:35:26,366 bike_index.py->search_by_location():54]INFO: Recieved 0 records from bikeIndex API
+[2023-11-02 06:35:26,366 bike_index.py->search_by_location():53]ERROR: An unexpected error occured: API Error
+[2023-11-02 06:35:26,366 bike_index.py->search_by_location():54]INFO: Recieved 0 records from bikeIndex API
+[2023-11-02 06:35:26,366 bike_index.py->search_by_location():54]INFO: Recieved 200 records from bikeIndex API
+[2023-11-02 06:35:26,366 bike_index.py->search_by_location():54]INFO: Recieved 2 records from bikeIndex API
+[2023-11-02 06:35:27,529 util.py->log_info():67]INFO: error_code=None error_message="You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys." error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+[2023-11-02 06:35:27,529 gpt.py->get_manufacturer_details():62]ERROR: Error while fetching manufacturer details from GPT: cannot access local variable 'response' where it is not associated with a value
+[2023-11-02 06:35:52,351 main.py-><module>():9]INFO: Application started
+[2023-11-02 06:35:52,366 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-02 06:35:52,366 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-02 06:36:02,609 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 06:36:03,574 bike_index.py->search_by_location():54]INFO: Recieved 53 records from bikeIndex API
+[2023-11-02 06:36:04,261 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 06:36:04] "GET /bikeindex/search?location=dublin&duration=3 HTTP/1.1" 200 -
+[2023-11-02 09:14:51,320 main.py-><module>():9]INFO: Application started
+[2023-11-02 09:14:51,335 _internal.py->_log():224]INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2023-11-02 09:14:51,335 _internal.py->_log():224]INFO: [33mPress CTRL+C to quit[0m
+[2023-11-02 09:15:03,071 api.py->get():78]INFO: Received API call: /search from IP 127.0.0.1
+[2023-11-02 09:15:04,408 bike_index.py->search_by_location():54]INFO: Recieved 53 records from bikeIndex API
+[2023-11-02 09:15:05,489 _internal.py->_log():224]INFO: 127.0.0.1 - - [02/Nov/2023 09:15:05] "GET /bikeindex/search?location=dublin&duration=6 HTTP/1.1" 200 -
