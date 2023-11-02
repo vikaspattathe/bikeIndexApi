@@ -115,7 +115,7 @@ class TestBikeIndex(unittest.TestCase):
             {"id": 2, "date_stolen": 1667232000},  # Date: 30-10-2022
         ]
         bikeIndex=BikeIndex()
-        months_ago = 13  # 12 months
+        months_ago = 13  # 13 months
         filtered_records = bikeIndex.filter_by_time(search_result, months_ago)
         self.assertEqual(len(filtered_records), 1)
 

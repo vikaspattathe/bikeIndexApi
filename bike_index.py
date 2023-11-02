@@ -8,7 +8,6 @@ from gpt import GPT
 
 class BikeIndex:
     
-    #constructor for BikeIndex
     def __init__(self) -> None:
         #logger configuration
         FORMAT = "[%(asctime)s %(filename)s->%(funcName)s():%(lineno)s]%(levelname)s: %(message)s"

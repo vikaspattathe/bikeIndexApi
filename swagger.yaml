@@ -9,7 +9,7 @@ info:
 paths:
   /bikeindex/search:
     get:
-      summary: Search for bikes
+      summary: API  to query and retrieve stolen bikes based on parameters which inclues location , manufacturer , duration and distance.
       parameters:
         - name: location
           in: query
@@ -38,6 +38,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bike'
+        '500':
+          description: Error Message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
   /bikeindex/id:
     get:
       summary: Get bike by ID
@@ -55,6 +61,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bike'
+        '400':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+        '500':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
 components:
   schemas:
     Bike:
@@ -66,4 +84,81 @@ components:
         manufacturer_name:
           type: string
           description: Manufacturer Name
+        manufacturer_details:
+          type: string
+          description: Manufacturer details
+        date_stolen:
+          type: string
+          description: Date Stolen (DD-MM-YYYY)
+        image_base64:
+          type: string
+          description: Image in base64 encoding
+        description:
+          type: string
+          description: Description of the listing
+        frame_colors:
+          type: string
+          description: Frame colors
+        frame_model:
+          type: string
+          description: Frame model 
+        is_stock_img:
+          type: string
+          description: Stock image or not
+        large_img:
+          type: string
+          description: Image url
+        location_found:
+          type: string
+          description: Location found
+        external_id:
+          type: string
+          description: External ID
+        registry_name:
+          type: string
+          description: Registry Name
+        registry_url:
+          type: string
+          description: Registry URL
+        serial:
+          type: string
+          description: Serial number of the bike
+        status:
+          type: string
+          description: Status - Stolen or Not
+        stolen:
+          type: string
+          description: Stolen or not
+        stolen_coordinates:
+          type: string
+          description: Stolen coordinates
+        stolen_location:
+          type: string
+          description: Stolen Location
+        thumb:
+          type: string
+          description: Thumbnail url
+        title:
+          type: string
+          description: Title of the ad
+        url:
+          type: string
+          description: URL of the ad
+        year:
+          type: string
+          description: Year of Manufacture
+        propulsion_type_slug:
+          type: string
+          description: Propulsion Type
+        cycle_type_slug:
+          type: string
+          description: Cycle Type
+    ErrorMessage:
+      type: object
+      properties:
+        error:
+          type: string
+          description: error message.
+
+        
 

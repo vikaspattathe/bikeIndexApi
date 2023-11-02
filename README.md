@@ -1,6 +1,17 @@
 # Bike Index API
 This project provides a RESTful API for searching and filtering stolen bikes from the BikeIndex website. It allows users to query and retrieve information about stolen bikes based on location, manufacturer,duration and range.
 
+# Project Resources 
+
+    api.py             --------> Source code which has API definition for all the REST API endpoints.
+    bike_index.py      --------> Python code which has the all the relevant functions to call bike_index third party service
+    gpt.py             --------> Python code which has functions to make Open AI API calls to retrieve manufacturers details.
+    main.py            --------> Entry point of the project.
+    Dockerfile         --------> Docker file which details the steps for creating a docker container
+    requirements.txt   --------> Txt file which has all the dependent libraries listed.
+    swagger.yaml       --------> OpenAPI definition contract
+    test               --------> folder with all the respective unit test cases.
+
 # Features
 Stolen Bike Search: Easily search for stolen bikes with the below parameters.
     
@@ -35,7 +46,20 @@ Image Retrieval: Images of the stolen bikes are fetched from the web and convert
 
 5. You can view and test api on your browser : http://127.0.0.1:5000/
 
+
+# Deployment Steps (Locally or in Cloud Environment) 
+
+The project also has a dockerfile and the docker image can be built using the below command . 
+
+docker build . 
+
+The container can be run in any environment using the command . 
+
+docker run <image_id>
+
 # USAGE
+You can view and test all the endpoints on swaggerUI in your browser at http://127.0.0.1:5000/ 
+
 ## User endpoints:
 GET  /bikeindex/search: 
 Allows users to search for stolen bikes based on various parameters like location, duration, distance and manufacturer name.

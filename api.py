@@ -12,11 +12,11 @@ FORMAT = "[%(asctime)s %(filename)s->%(funcName)s():%(lineno)s]%(levelname)s: %(
 logging.basicConfig(filename='./logs/BikeIndexApp.log',format=FORMAT, level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-ns = Namespace('bikeindex', description='search operations')
+ns = Namespace('bikeindex', description='Bike Search Operations')
 api.add_namespace(ns)
 
 
-# Define models for API documentation
+# Object Definition for Bike Index Model
 bike_model = api.model('Bike', {
     'id': fields.Integer(description='Bike ID'),
     'manufacturer_name': fields.String(description='Manufacturer Name'),
@@ -36,7 +36,7 @@ bike_model = api.model('Bike', {
     'serial': fields.String(description='Serial number of the bike'),
     'status': fields.String(description='Status - Stolen or Not'),
     'stolen': fields.Boolean(description='Stolen or not'),
-    'stolen_coordinates': fields.List(fields.Integer,description='Stolen Coordinates'),
+    'stolen_coordinates': fields.List(fields.Integer,description='Stolen or not'),
     'stolen_location': fields.String(description='Stolen Location'),
     'thumb': fields.String(description='Thumbnail url'),
     'title': fields.String(description='Title of the ad'),
@@ -46,9 +46,25 @@ bike_model = api.model('Bike', {
     'cycle_type_slug': fields.String(description='Cycle Type')
 })
 
-#API endpoint to query and retrieve bikes based on location, manufacturer,duration and distance.
+
 @ns.route('/search')
 class BikeSearch(Resource):
+    """API  to query and retrieve stolen bikes based on parameters which inclues location , manufacturer , duration and distance.
+       This API in turns calls the bikeindex.org API to retrieve the stolen bike information and retrieves the manufacturers information
+       from the manufacturers.csv file.
+       If the manufacturerers.csv file doesnot have information , then an API call is made to OpenAPI to retrieve the manufacturers information
+       and updated in the csv file for future use. 
+    Args:
+        Resource (location): Search location
+        Resource (duration): Duration in months
+        Resource (manufacturer): Manufacturer name
+        Resource (distance): Range in kms
+        
+    Raises:
+        Error :
+    Returns:
+        Bike Model: Array of bike Model JSON which provides the information of stolen bikes
+    """
     @ns.doc(params={
         'location': {'description': 'Search location (IP location by default)', 'type': 'string'},
         'duration': {'description': 'Duration in months (6 by default)', 'type': 'integer'},
@@ -81,9 +97,22 @@ class BikeSearch(Resource):
             logger.error(error_message)
             return {'error': error_message}, 500
 
-#API endpoint to retrieve bikes using their id        
 @ns.route('/id')
 class BikeSearchById(Resource):
+    """API to query and filter response based on the bike id.
+       This API makes a call to the biker API endpoint by passing the biker id to 
+       retrieve the relevant bike information
+
+    Args:
+        Resource (id): Bike ID
+
+    Raises:
+        ValueError: If the id is missing and 400 status code is returned
+        Exception: If there are any issues during execution , error message is returned with 500 status code
+
+    Returns:
+        Bike Model: Bike model object is returned.
+    """
     @ns.doc(params={
         'id': {'description': 'Bike id from BikeIndex', 'type': 'integer','required': True}
     })
