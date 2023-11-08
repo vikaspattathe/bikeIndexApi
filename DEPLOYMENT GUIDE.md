@@ -5,6 +5,7 @@ Guide to deploy the app on AWS EC2.
 ![Alt text](image.png)
 
 1. Create a VPC in AWS with below configurations.
+
         Select VPC and more.
         VPC Name : bikeIndexVPC
         IPv4 CIDR block : 10.0.0.0/26
@@ -15,6 +16,7 @@ Guide to deploy the app on AWS EC2.
         NAT Gateways : None
 
 2. Create an EC2 instance called bikeIndexInstance with below configurations and launch it. 
+
         No. of instances : 1
         Software image : Amazon Linux
         Instance type : t2.micro
@@ -22,12 +24,14 @@ Guide to deploy the app on AWS EC2.
         Create Security group and allow HTTP and HTTPS traffic
 
 3. Go to security groups and add a new inbound rule.
+
         Type : Custom TCP
         Port range : 5000
 
 4. Connect to the ec2 instance using Putty from your local system using the key pair from step 2.
 
 5. Execute the below commands in ec2 instance to run the application.
+
         sudo yum update -y
         sudo yum install python3 -y
         sudo yum install python3-pip -y
