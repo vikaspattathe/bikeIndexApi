@@ -41,7 +41,7 @@ Guide to deploy the app on AWS EC2.
         pip install -r requirements.txt
         python3 main.py
 
-The deployed application will be accessible at "\<Public_IP_of_EC2\>:5000". Users can interact with the application through this address.
+The deployed application will be accessible at "\<Public IP of EC2\>:5000". Users can interact with the application through this address.
 
 
 
